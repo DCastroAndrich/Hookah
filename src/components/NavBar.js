@@ -1,9 +1,10 @@
 import React from 'react'
 import { Container, Nav, Navbar } from "react-bootstrap";
+import CartWidget from './CartWidget';
 
 const NavBar = () => {
     return (
-        <Navbar bg="dark" expand="lg" variant="dark" sticky="top" >
+        <Navbar bg="dark" expand="lg" variant="dark" fixed="top" >
         <Container>
           <Navbar.Brand href="#home">Krishna Hooka's</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -17,6 +18,7 @@ const NavBar = () => {
               <Nav.Link href="#contacto">Contacto</Nav.Link>
             </Nav>
           </Navbar.Collapse>
+          <CartWidget />
         </Container>
       </Navbar>
     )
