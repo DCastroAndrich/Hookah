@@ -1,8 +1,7 @@
 .itemListContainer {
-    padding-top: 80px;
-    background-color: whitesmoke;
-    color: grey;
-    height: 20vw;
-    text-align: center
-};
-
+  padding-top: 80px;
+  background-color: whitesmoke;
+  color: grey;
+  height: 80vw;
+  text-align: center;
+}
