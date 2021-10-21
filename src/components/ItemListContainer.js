@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import ItemList from "./ItemList";
 import "./ItemListContainer.css";
 
@@ -41,7 +41,7 @@ function ItemListContainer() {
   const task = new Promise((resolve) => {
     setTimeout(() => {
       resolve(items);
-    }, 3000);
+    }, 2000);
   });
 
   task
@@ -54,9 +54,13 @@ function ItemListContainer() {
     });
 
   return (
-    <Container>
+    <Container fluid className="itemListContainer">
       <h3>Bienvenidos</h3>
-      {isLoading && <h1>Loading...</h1>}
+      {isLoading && (
+        <Spinner animation="border" role="status" variant="secondary">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      )}
       <ItemList items={data} />
     </Container>
   );
