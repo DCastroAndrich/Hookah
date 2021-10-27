@@ -1,34 +1,24 @@
 .card {
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    margin: 30px;
-
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  margin: 30px;
 }
-
- 
 
 .card:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
-
-
-
 
 .cardImg {
   background-color: whitesmoke;
-  
-  
 }
-
-
 
 .cardBody {
   background-color: rgba(11, 19, 43, 0.7);
   border-radius: 3px;
-  color: #10ebba;
+  color: #eff7f6;
   text-align: center;
   line-height: 1px;
 }
 
 button {
-  background-color: black !important;
+  background-color: black;
 }

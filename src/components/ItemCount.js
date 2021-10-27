@@ -1,5 +1,7 @@
+import { cilMinus, cilPlus } from "@coreui/icons";
+import CIcon from "@coreui/icons-react";
+import { CButton, CButtonGroup, CContainer, CRow } from "@coreui/react";
 import React, { useState } from "react";
-import { ButtonGroup, Button, Container, Row } from "react-bootstrap";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [count, setCount] = useState(initial);
@@ -25,24 +27,24 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   };
 
   return (
-    <Container style={{ width: "10rem" }}>
-      <Row>
-        <ButtonGroup>
-          <Button variant="danger" onClick={handleDecrement}>
-            -
-          </Button>
-          <Container>{count}</Container>
-          <Button variant="success" onClick={handleIncrement}>
-            +
-          </Button>
-        </ButtonGroup>
-      </Row>
-      <Row>
-        <Button variant="dark" onClick={addItem}>
+    <CContainer style={{ width: "10rem" }}>
+      <CRow>
+        <CButtonGroup>
+          <CButton color="danger" variant="ghost" onClick={handleDecrement}>
+            <CIcon icon={cilMinus} size="sm" />
+          </CButton>
+          <CContainer>{count}</CContainer>
+          <CButton color="success" variant="ghost" onClick={handleIncrement}>
+            <CIcon icon={cilPlus} size="sm" />
+          </CButton>
+        </CButtonGroup>
+      </CRow>
+      <CRow>
+        <CButton color="warning" variant="outline" onClick={addItem}>
           Agregar al carrito
-        </Button>
-      </Row>
-    </Container>
+        </CButton>
+      </CRow>
+    </CContainer>
   );
 };
 
