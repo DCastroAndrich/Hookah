@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
-import ItemList from "./ItemList";
+import ItemList from "../../components/item-list/ItemList";
+
 import "./ItemListContainer.css";
 
 const items = [

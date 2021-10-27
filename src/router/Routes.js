@@ -1,20 +1,19 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import ItemListContainer from "../components/ItemListContainer";
-import NavBar from "../components/NavBar";
+import ItemListContainer from "../layouts/item-list-container/ItemListContainer";
+import NavBar from "../components/nav-bar/NavBar";
+import ItemDetailContainer from "../layouts/item-detail-container/ItemDetailContainer";
 
 const Routes = () => {
   return (
-    <div>
-      <BrowserRouter>
-        <NavBar />
-        <Switch>
-          <Route exact path="/">
-            <ItemListContainer />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      <Switch>
+        <Route exact path="/" component={ItemListContainer} />
+        <Route path="/category/:id" component={ItemListContainer} />
+        <Route path="/item/:id" component={ItemDetailContainer} />
+      </Switch>
+    </BrowserRouter>
   );
 };
 

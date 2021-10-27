@@ -1,7 +1,7 @@
 import { CContainer } from "@coreui/react";
 import React, { useState } from "react";
 import { Spinner } from "react-bootstrap";
-import ItemDetail from "../../components/ItemDetail";
+import ItemDetail from "../../components/item-detail/ItemDetail";
 
 const itemTest = {
   id: "1",
@@ -14,6 +14,7 @@ const itemTest = {
 function ItemDetailContainer() {
   const [isLoading, setIsLoading] = useState(true);
   const [item, setItem] = useState({});
+  
 
   const getItem = new Promise((resolve) => {
     setTimeout(() => {
