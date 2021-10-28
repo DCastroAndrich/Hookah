@@ -13,16 +13,16 @@ import {
 
 import ItemCount from "../item-count/ItemCount";
 
-const ItemDetail = ({ item }) => {
+const ItemDetail = ({ id, title, description, price, pictureUrl }) => {
   return (
     <CContainer>
       <CCard className="text-center" style={{ width: "18rem" }}>
-        <CCardHeader component="h5">{item.title}</CCardHeader>
-        <CCardImage orientation="top" src={item.pictureUrl} />
+        <CCardHeader component="h5">{title}</CCardHeader>
+        <CCardImage orientation="top" src={pictureUrl} />
         <CCardBody>
-          <CCardTitle>{item.title} </CCardTitle>
-          <CCardText>{item.description}</CCardText>
-          <CCardSubtitle>$ {item.price} </CCardSubtitle>
+          <CCardTitle>{title} </CCardTitle>
+          <CCardText>{description}</CCardText>
+          <CCardSubtitle>$ {price} </CCardSubtitle>
         </CCardBody>
         <CCardFooter>
           <ItemCount />

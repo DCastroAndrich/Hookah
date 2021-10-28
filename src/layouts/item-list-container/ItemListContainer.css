@@ -1,8 +1,9 @@
 .itemListContainer {
   background-color: rgb(75, 75, 75);
   color: #10ebba;
-  height: 100vh;
+  height: 100%;
   margin-top: 50px;
+  padding-bottom: 100px;
   padding-top: 100px;
   text-align: center !important;
 }

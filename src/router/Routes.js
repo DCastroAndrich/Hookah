@@ -10,8 +10,8 @@ const Routes = () => {
       <NavBar />
       <Switch>
         <Route exact path="/" component={ItemListContainer} />
-        <Route path="/category/:id" component={ItemListContainer} />
-        <Route path="/item/:id" component={ItemDetailContainer} />
+        <Route path="/category/:categoryId" component={ItemListContainer} />
+        <Route path="/item/:itemId" component={ItemDetailContainer} />
       </Switch>
     </BrowserRouter>
   );
