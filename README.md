@@ -9,4 +9,4 @@ Sitio creado como proyecto final para el curso ReactJs de CoderHouse.
 ## Creador
 DCastroAndrich - Web Developer
 
-![Gif de navegacion]("../krishna/public/img/gif/entregaIntermedia.gif")
+![Animation](https://github.com/DCastroAndrich/Hookah/blob/master/public/img/gif/entregaIntermedia.gif)
