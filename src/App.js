@@ -1,11 +1,14 @@
-import '@coreui/coreui/dist/css/coreui.min.css'
+import "@coreui/coreui/dist/css/coreui.min.css";
 import "./App.css";
-import "./components/item/Item.css"
-import Routes from './router/Routes';
+import "./components/item/Item.css";
+import { CartContext } from "./context/CartContext";
+import Routes from "./router/Routes";
 
 function App() {
   return (
-    <Routes/>
+    <CartContext.Provider value={[]} >
+      <Routes />
+    </CartContext.Provider>
   );
 }
 
