@@ -13,7 +13,10 @@ import {
 
 import ItemCount from "../item-count/ItemCount";
 
-const ItemDetail = ({ id, title, description, price, pictureUrl }) => {
+const ItemDetail = ({ id, title, description, price, pictureUrl, stock }) => {
+
+   
+
   return (
     <CContainer>
       <CCard className="text-center" style={{ width: "18rem" }}>
@@ -25,7 +28,7 @@ const ItemDetail = ({ id, title, description, price, pictureUrl }) => {
           <CCardSubtitle>$ {price} </CCardSubtitle>
         </CCardBody>
         <CCardFooter>
-          <ItemCount />
+          <ItemCount stock={stock} />
         </CCardFooter>
       </CCard>
     </CContainer>

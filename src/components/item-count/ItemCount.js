@@ -1,10 +1,10 @@
-import { cilMinus, cilPlus } from "@coreui/icons";
-import CIcon from "@coreui/icons-react";
-import { CButton, CButtonGroup, CContainer, CRow } from "@coreui/react";
 import React, { useState } from "react";
+import { CButton, CButtonGroup, CContainer, CRow } from "@coreui/react";
+import CIcon from "@coreui/icons-react";
+import { cilMinus, cilPlus } from "@coreui/icons";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
-  const [count, setCount] = useState(initial);
+const ItemCount = ({ stock, onAdd }) => {
+  const [count, setCount] = useState(0);
 
   const handleIncrement = () => {
     if (count < stock) {
@@ -21,6 +21,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   const addItem = () => {
     if (stock > 0) {
       onAdd = count;
+      alert(`Se agregaron ${count} productos al carrito.` )
     }
 
     console.log(onAdd);
