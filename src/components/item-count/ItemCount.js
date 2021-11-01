@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { CButton, CButtonGroup, CContainer, CRow } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 import { cilMinus, cilPlus } from "@coreui/icons";
 
-const ItemCount = ({ stock, onAdd }) => {
-  const [count, setCount] = useState(0);
-
+const ItemCount = ({ stock, onAdd, count, setCount }) => {
   const handleIncrement = () => {
     if (count < stock) {
       setCount((prevCount) => prevCount + 1);
@@ -21,7 +19,7 @@ const ItemCount = ({ stock, onAdd }) => {
   const addItem = () => {
     if (stock > 0) {
       onAdd = count;
-      alert(`Se agregaron ${count} productos al carrito.` )
+      alert(`Se agregaron ${count} productos al carrito.`);
     }
 
     console.log(onAdd);
