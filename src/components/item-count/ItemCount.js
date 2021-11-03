@@ -2,7 +2,6 @@ import React from "react";
 import { CButton, CButtonGroup, CContainer, CRow } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 import { cilMinus, cilPlus } from "@coreui/icons";
-import "./ItemCount.css"
 
 const ItemCount = ({ stock, onAdd, count, setCount }) => {
   const handleIncrement = () => {
