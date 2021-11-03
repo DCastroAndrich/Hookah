@@ -34,7 +34,11 @@ const ItemDetail = ({
           <CCardSubtitle>$ {price} </CCardSubtitle>
         </CCardBody>
         <CCardFooter>
-          <ItemCount stock={stock} count={count} setCount={setCount} />
+          <ItemCount
+            stock={stock}
+            count={count}
+            setCount={setCount}
+          />
         </CCardFooter>
       </CCard>
     </CContainer>

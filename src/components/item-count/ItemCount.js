@@ -2,6 +2,7 @@ import React from "react";
 import { CButton, CButtonGroup, CContainer, CRow } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 import { cilMinus, cilPlus } from "@coreui/icons";
+import "./ItemCount.css"
 
 const ItemCount = ({ stock, onAdd, count, setCount }) => {
   const handleIncrement = () => {
@@ -29,11 +30,11 @@ const ItemCount = ({ stock, onAdd, count, setCount }) => {
     <CContainer style={{ width: "10rem" }}>
       <CRow>
         <CButtonGroup>
-          <CButton color="danger" variant="ghost" onClick={handleDecrement}>
+          <CButton color="danger"  onClick={handleDecrement} className="btn-ev">
             <CIcon icon={cilMinus} size="sm" />
           </CButton>
           <CContainer>{count}</CContainer>
-          <CButton color="success" variant="ghost" onClick={handleIncrement}>
+          <CButton color="success"  onClick={handleIncrement} className="btn-ev">
             <CIcon icon={cilPlus} size="sm" />
           </CButton>
         </CButtonGroup>
@@ -43,6 +44,7 @@ const ItemCount = ({ stock, onAdd, count, setCount }) => {
           Agregar al carrito
         </CButton>
       </CRow>
+      
     </CContainer>
   );
 };

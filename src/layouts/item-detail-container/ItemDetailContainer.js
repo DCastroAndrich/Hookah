@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { CContainer } from "@coreui/react";
+import { CButton, CContainer } from "@coreui/react";
 import { Spinner } from "react-bootstrap";
 import ItemDetail from "../../components/item-detail/ItemDetail";
 import "./ItemDetailContainer.css";
+import { Link } from "react-router-dom";
 
 const itemTest = [
   {
@@ -82,6 +83,11 @@ function ItemDetailContainer() {
         </Spinner>
       )}
       <ItemDetail {...item} count={count} setCount={setCount} />
+      {count > 0 && (
+        <Link to="/cart">
+          <CButton color="info">Finalizar mi compra!</CButton>
+        </Link>
+      )}
     </CContainer>
   );
 }
