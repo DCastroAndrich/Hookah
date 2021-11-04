@@ -5,6 +5,14 @@ export const CartContext = createContext([]);
 export const CartProvider = ({ defaultValue = [], children }) => {
   const [items, setItems] = useState(defaultValue);
 
+  const isInCart = (id) => {
+    if (items.find((item) => item.id === id)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const addItem = (currentItem) => {
     if (items.some(({ item }) => item.id === currentItem.item.id)) {
       return;
@@ -12,18 +20,18 @@ export const CartProvider = ({ defaultValue = [], children }) => {
     setItems([...items, currentItem]);
   };
 
-  const removeItem = (id) => {};
+  const removeItem = (id) => {
+    const itemRemoved = items.filter(({item}) => item.id !== id);
+    setItems(itemRemoved);
+  };
 
   const clear = () => setItems(defaultValue);
 
-  const isInCart = (id) => {
-    return id ? alert("El producto ya se encuentra en el carrito") : addItem()
-  };
-
-    return (
-        <CartContext.Provider value={{items, addItem, removeItem, clear, isInCart}}>
-            {children}
-        </CartContext.Provider>
-    )
-
+  return (
+    <CartContext.Provider
+      value={{ items, addItem, removeItem, clear, isInCart }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 };

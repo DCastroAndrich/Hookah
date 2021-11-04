@@ -31,7 +31,7 @@ const ItemDetail = ({
 
   const location = useLocation();
 
-  const { addItem } = useContext(CartContext);
+  const { addItem, removeItem } = useContext(CartContext);
 
   const handleAddItem = () => {
     const item = { id, title, description, price, pictureUrl, stock };
@@ -39,9 +39,14 @@ const ItemDetail = ({
     setIsAdded(true);
   };
 
+  const handleRemoveItem = ()=> {
+    
+    removeItem(id)
+  }
+
   return (
-    <CContainer style={{'margin-top': '150px'}}>
-      <CCard className="text-center" style={{ width: "18rem" }}>
+    <CContainer style={{'margin-top': '50px'}}>
+      <CCard className="text-center" style={{ width: "15rem" }}>
         <CCardHeader component="h5">{title}</CCardHeader>
         <CCardImage orientation="top" src={pictureUrl} />
         <CCardBody>
@@ -74,12 +79,13 @@ const ItemDetail = ({
             )}
           </>
         )}
-        {location.pathname === "/cart" && (
+        {location.pathname !== "/cart" ? null : (
           
             <CCardFooter>
               <CCardSubtitle>
                 Se añadieron {count} {title}'s al carrito!
               </CCardSubtitle>
+              <CButton color="warning" onClick={handleRemoveItem} >Eliminar producto del carrito </CButton>
               <Link to="/">
                   <CButton color="secondary">Volver</CButton>
                 </Link>
