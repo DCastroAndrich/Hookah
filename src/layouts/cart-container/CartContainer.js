@@ -12,7 +12,7 @@ const CartContainer = () => {
   };
 
   return (
-    <div style={{ "margin-top": "150px" }}>
+    <div style={{ marginTop: "150px" }}>
       <h1>Este es el CartContainer</h1>
       <div>
         {items.length > 0 ? (
@@ -22,7 +22,7 @@ const CartContainer = () => {
             <CContainer>
               <CRow>
                 <CCol md={12}>
-                  <h3>Total de la compra: $ {totalPrice()}</h3>
+                  <h3>Total de la compra: $ {totalPrice().toFixed(2)}</h3>
                   <CButton color="primary">Finalizar Compra</CButton>
                   <CButton color="danger" onClick={handleClear}>
                     Vaciar carrito

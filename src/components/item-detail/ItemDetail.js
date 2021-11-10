@@ -47,7 +47,7 @@ const ItemDetail = ({
   let total = price * count;
 
   return (
-    <CContainer style={{ "margin-top": "50px" }}>
+    <CContainer style={{ marginTop: "50px" }}>
       {location.pathname !== "/cart" ? (
         <CCard className="text-center" style={{ width: "15rem" }}>
           <CCardHeader component="h5">{title}</CCardHeader>
@@ -66,7 +66,9 @@ const ItemDetail = ({
                   {count > 0 && (
                     <>
                       <CRow>
-                        <CCardSubtitle>Precio total: $ {total.toFixed(2)}</CCardSubtitle>
+                        <CCardSubtitle>
+                          Precio total: $ {total.toFixed(2)}
+                        </CCardSubtitle>
                       </CRow>
 
                       <CButton color="info" onClick={handleAddItem}>
@@ -97,17 +99,6 @@ const ItemDetail = ({
               )}
             </>
           )}
-          {/* {location.pathname !== "/cart" ? null : (
-          <CCardFooter>
-            
-            <CButton color="warning" onClick={handleRemoveItem}>
-              Eliminar producto.{" "}
-            </CButton>
-            <Link to="/">
-              <CButton color="secondary">Volver</CButton>
-            </Link>
-          </CCardFooter>
-        )} */}
         </CCard>
       ) : (
         <CCard className="mb-3" style={{ maxWidth: "540px" }}>

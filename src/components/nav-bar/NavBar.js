@@ -21,19 +21,34 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link onClick={() => history.push("/category/hookah")}>
+            <Nav.Link
+              to="/category/Hookah"
+              onClick={() => history.push("/category/Hookah")}
+            >
               Hookah
             </Nav.Link>
-            <Nav.Link onClick={() => history.push("/category/tabacos")}>
+            <Nav.Link
+              to="/category/Tabacos"
+              onClick={() => history.push("/category/Tabacos")}
+            >
               Tabacos
             </Nav.Link>
-            <Nav.Link onClick={() => history.push("/category/carbones")}>
+            <Nav.Link
+              to="/category/Carbones"
+              onClick={() => history.push("/category/Carbones")}
+            >
               Carbones
             </Nav.Link>
-            <Nav.Link onClick={() => history.push("/category/accesorios")}>
+            <Nav.Link
+              to="/category/Accesorios"
+              onClick={() => history.push("/category/Accesorios")}
+            >
               Accesorios
             </Nav.Link>
-            <Nav.Link onClick={() => history.push("/category/contacto")}>
+            <Nav.Link
+              to="/category/Contacto"
+              onClick={() => history.push("/category/Contacto")}
+            >
               Contacto
             </Nav.Link>
           </Nav>

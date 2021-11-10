@@ -9,7 +9,6 @@ const Cart = ({items}) => {
         <CCardGroup className="cartContainer">
             {items.map((currentItem) => {
                 const {item} = currentItem;
-                console.log("item", item);
                 return <ItemDetail key={item.id} {...item} count={currentItem.count} />
             } )}
             
