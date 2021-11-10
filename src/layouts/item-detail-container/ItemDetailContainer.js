@@ -4,8 +4,9 @@ import { CContainer } from "@coreui/react";
 import { Spinner } from "react-bootstrap";
 import ItemDetail from "../../components/item-detail/ItemDetail";
 import "./ItemDetailContainer.css";
+import { getFirestore } from "../../firebase";
 
-const itemTest = [
+/* const itemTest = [
   {
     id: "1",
     title: "StarBuzz Carbine Mad Dragon",
@@ -46,7 +47,7 @@ const itemTest = [
     pictureUrl: "/img/BlueMist.png",
     stock: "25",
   },
-];
+]; */
 
 function ItemDetailContainer() {
   const { itemId } = useParams();
@@ -54,7 +55,7 @@ function ItemDetailContainer() {
   const [isLoading, setIsLoading] = useState(true);
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const getItem = new Promise((resolve) => {
       setTimeout(() => {
         const findItem = itemTest.filter((item) => item.id === itemId);
@@ -70,10 +71,34 @@ function ItemDetailContainer() {
       .finally(() => {
         setIsLoading(false);
       });
+  }, [itemId]); */
+
+  useEffect(() => {
+    const db = getFirestore();
+    const itemcollection = db.collection("items");
+    const currentItem = itemcollection.doc(itemId);
+
+    currentItem
+      .get()
+      .then((document) => {
+        if (!document.exists) {
+          return;
+        }
+        setItem({ id: document.id, ...document.data() });
+      })
+      .catch((error) => console.log(error))
+      .finally(setIsLoading(false));
   }, [itemId]);
+  if (!item) {
+    return null;
+  }
 
   return (
-    <CContainer fluid className="detailContainer" style={{'margin-top': '150px'}}>
+    <CContainer
+      fluid
+      className="detailContainer"
+      style={{ "margin-top": "150px" }}
+    >
       <h2>Producto seleccionado</h2>
       {isLoading && (
         <Spinner animation="border" role="status" variant="secondary">
@@ -81,7 +106,6 @@ function ItemDetailContainer() {
         </Spinner>
       )}
       <ItemDetail {...item} count={count} setCount={setCount} />
-      
     </CContainer>
   );
 }
