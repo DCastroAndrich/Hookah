@@ -9,8 +9,8 @@ import "./ItemListContainer.css";
 function ItemListContainer() {
   const { categoryId } = useParams();
   const [data, setData] = useState([]);
-
   const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
     const db = getFirestore();

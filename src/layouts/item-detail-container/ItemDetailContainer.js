@@ -39,12 +39,13 @@ function ItemDetailContainer() {
       style={{ marginTop: "150px" }}
     >
       <h2>Producto seleccionado</h2>
-      {isLoading && (
+      {isLoading ? (
         <Spinner animation="border" role="status" variant="secondary">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
+      ) : (
+        <ItemDetail {...item} count={count} setCount={setCount} />
       )}
-      <ItemDetail {...item} count={count} setCount={setCount} />
     </CContainer>
   );
 }

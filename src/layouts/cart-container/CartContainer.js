@@ -1,11 +1,27 @@
-import { CButton, CCol, CContainer, CRow } from "@coreui/react";
-import React, { useContext } from "react";
+import {
+  CButton,
+  //CCloseButton,
+  CCol,
+  CContainer,
+  CModal,
+  CModalBody,
+  CModalHeader,
+  CModalTitle,
+  //COffcanvas,
+  //COffcanvasBody,
+  //COffcanvasHeader,
+  //COffcanvasTitle,
+  CRow,
+} from "@coreui/react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Cart from "../../components/cart/Cart";
+import UserForm from "../../components/user-form/UserForm";
 import { CartContext } from "../../context/CartContext";
 
 const CartContainer = () => {
   const { items, clear, totalPrice } = useContext(CartContext);
+  const [visible, setVisible] = useState(false);
 
   const handleClear = () => {
     clear();
@@ -23,7 +39,39 @@ const CartContainer = () => {
               <CRow>
                 <CCol md={12}>
                   <h3>Total de la compra: $ {totalPrice().toFixed(2)}</h3>
-                  <CButton color="primary">Finalizar Compra</CButton>
+                  <div>
+                    <CButton color="primary" onClick={() => setVisible(true)}>
+                      Finalizar Compra
+                    </CButton>
+
+                    <CModal
+                      alignment="center"
+                      visible={visible}
+                      onClose={() => setVisible(false)}
+                    >
+                      <CModalHeader>
+                        <CModalTitle>Formulario de Compra</CModalTitle>
+                      </CModalHeader>
+                      <CModalBody>
+                        <UserForm
+                          items={items}
+                          total={totalPrice().toFixed(2)}
+                          clear={handleClear}
+                        />
+                      </CModalBody>
+                    </CModal>
+
+                    {/* <COffcanvas placement="end" visible={visible} onHide={()=> setVisible(false)}>
+                    <COffcanvasHeader>
+                      <COffcanvasTitle>Formulario de Compra</COffcanvasTitle>
+                      <CCloseButton className="text-reset" onClick={()=> setVisible(false)} />
+                    </COffcanvasHeader>
+                    <COffcanvasBody>
+                      <UserForm items={items} total={totalPrice().toFixed(2)} clear={handleClear}/>
+                    </COffcanvasBody>
+
+                  </COffcanvas> */}
+                  </div>
                   <CButton color="danger" onClick={handleClear}>
                     Vaciar carrito
                   </CButton>
