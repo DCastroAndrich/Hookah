@@ -1,5 +1,5 @@
+import { CContainer, CSpinner } from "@coreui/react";
 import React, { useEffect, useState } from "react";
-import { Container, Spinner } from "react-bootstrap";
 import { useParams } from "react-router";
 import ItemList from "../../components/item-list/ItemList";
 import { getFirestore } from "../../firebase/index";
@@ -10,7 +10,6 @@ function ItemListContainer() {
   const { categoryId } = useParams();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
 
   useEffect(() => {
     const db = getFirestore();
@@ -59,19 +58,25 @@ function ItemListContainer() {
   }, [categoryId]);
 
   return (
-    <Container fluid className="itemListContainer">
-      <h3>Bienvenidos a Krishna's Hookah</h3>
-      {isLoading ? (
-        <Spinner animation="border" role="status" variant="secondary">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      ) : (
-        <>
-          {categoryId ? <h2>{categoryId}</h2> : <h2>Catalogo de productos</h2>}
-          <ItemList items={data} />
-        </>
-      )}
-    </Container>
+    <CContainer fluid className="itemListContainer">
+      <h1>Bienvenidos a Krishna's Hookah</h1>
+      <CContainer fluid>
+        {isLoading ? (
+          <CSpinner role="status" color="success">
+            <span className="visually-hidden">Loading...</span>
+          </CSpinner>
+        ) : (
+          <>
+            {categoryId ? (
+              <h2>{categoryId}</h2>
+            ) : (
+              <h2>Catalogo de productos</h2>
+            )}
+            <ItemList items={data} />
+          </>
+        )}
+      </CContainer>
+    </CContainer>
   );
 }
 

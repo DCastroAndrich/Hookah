@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { cilCheckCircle } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 import {
@@ -9,9 +11,9 @@ import {
   CFormLabel,
   CFormText,
 } from "@coreui/react";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { getFirestore } from "../../firebase";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
 const UserForm = ({ items, total, clear }) => {
   const [data, setData] = useState({
@@ -26,26 +28,23 @@ const UserForm = ({ items, total, clear }) => {
     setData({ ...data, [e.target.id]: e.target.value });
   };
 
+  const newItems = items.map(({ item, count }) => ({
+    item: {
+      id: item.id,
+      title: item.title,
+      price: item.price,
+    },
+    count,
+  }));
+  const newOrder = {
+    buyer: data,
+    items: newItems,
+    total,
+    date: firebase.firestore.Timestamp.fromDate(new Date()),
+  };
+
   const sendOrder = (e) => {
     e.preventDefault();
-
-    const newItems = items.map(({ item, count }) => ({
-      item: {
-        id: item.id,
-        title: item.title,
-        price: item.price,
-      },
-      count,
-    }));
-    const newOrder = {
-      buyer: {
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-      },
-      items: newItems,
-      total,
-    };
 
     const db = getFirestore();
     const orders = db.collection("orders");
@@ -53,13 +52,13 @@ const UserForm = ({ items, total, clear }) => {
 
     orders
       .add(newOrder)
-      .then((response) => {
+      .then(({ id }) => {
         items.forEach(({ item, count }) => {
           const docRef = db.collection("items").doc(item.id);
           batch.update(docRef, { stock: item.stock - count });
         });
         batch.commit();
-        setOrderCreatedId(response.id);
+        setOrderCreatedId(id);
       })
       .catch((error) => console.log(error));
 
@@ -123,7 +122,9 @@ const UserForm = ({ items, total, clear }) => {
                 ID: {orderCreatedId}
               </p>
               <Link to="/">
-                <CButton color="info" onClick={clear}>Volver</CButton>
+                <CButton color="info" onClick={clear}>
+                  Volver
+                </CButton>
               </Link>
             </div>
           </CAlert>

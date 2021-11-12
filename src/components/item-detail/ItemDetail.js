@@ -18,6 +18,7 @@ import ItemCount from "../item-count/ItemCount";
 import { useLocation } from "react-router";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import "./ItemDetail.css";
 
 const ItemDetail = ({
   id,
@@ -47,9 +48,9 @@ const ItemDetail = ({
   let total = price * count;
 
   return (
-    <CContainer style={{ marginTop: "50px" }}>
+    <CContainer className="cardContainer">
       {location.pathname !== "/cart" ? (
-        <CCard className="text-center" style={{ width: "15rem" }}>
+        <CCard className="itemDetailCard">
           <CCardHeader component="h5">{title}</CCardHeader>
           <CCardImage orientation="top" src={pictureUrl} />
           <CCardBody>

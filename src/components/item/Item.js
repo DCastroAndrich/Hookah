@@ -1,15 +1,20 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import {
+  CCardBody,
+  CCardImage,
+  CCardSubtitle,
+  CCardTitle,
+} from "@coreui/react";
 import "./Item.css";
 
 const Item = ({ id, title, description, price, pictureUrl }) => {
   return (
     <>
-      <Card.Img className="cardImg" variant="top" src={pictureUrl} />
-      <Card.Body className="cardBody">
-        <Card.Text>$ {price}</Card.Text>
-        <Card.Title>{title} </Card.Title>
-      </Card.Body>
+      <CCardImage orientation="top" className="cardImg" src={pictureUrl} />
+      <CCardBody className="cardBody">
+        <CCardSubtitle>$ {price} </CCardSubtitle>
+        <CCardTitle>{title} </CCardTitle>
+      </CCardBody>
     </>
   );
 };

@@ -33,12 +33,7 @@ function ItemDetailContainer() {
   }
 
   return (
-    <CContainer
-      fluid
-      className="detailContainer"
-      style={{ marginTop: "150px" }}
-    >
-      <h2>Producto seleccionado</h2>
+    <CContainer fluid className="detailContainer">
       {isLoading ? (
         <Spinner animation="border" role="status" variant="secondary">
           <span className="visually-hidden">Loading...</span>

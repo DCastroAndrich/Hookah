@@ -1,0 +1,9 @@
+.itemListCard {
+  background-color: transparent;
+  border: none;
+  width: 16rem;
+  margin: 10px;
+  box-shadow: 16px 16px 44px 6px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: 16px 16px 44px 6px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 16px 16px 44px 6px rgba(0, 0, 0, 0.46);
+}

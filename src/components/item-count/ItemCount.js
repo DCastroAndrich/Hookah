@@ -16,22 +16,23 @@ const ItemCount = ({ stock, count, setCount }) => {
     }
   };
 
-  
-
   return (
     <CContainer style={{ width: "10rem" }}>
-      <CRow>
-        <CButtonGroup>
-          <CButton color="danger"  onClick={handleDecrement}>
-            <CIcon icon={cilMinus} size="sm" />
-          </CButton>
-          <CContainer>{count}</CContainer>
-          <CButton color="success"  onClick={handleIncrement}>
-            <CIcon icon={cilPlus} size="sm" />
-          </CButton>
-        </CButtonGroup>
-      </CRow>
-      
+      {stock === 0 ? (
+        <h3>Sin Stock</h3>
+      ) : (
+        <CRow>
+          <CButtonGroup>
+            <CButton color="danger" onClick={handleDecrement}>
+              <CIcon icon={cilMinus} size="sm" />
+            </CButton>
+            <CContainer>{count}</CContainer>
+            <CButton color="success" onClick={handleIncrement}>
+              <CIcon icon={cilPlus} size="sm" />
+            </CButton>
+          </CButtonGroup>
+        </CRow>
+      )}
     </CContainer>
   );
 };

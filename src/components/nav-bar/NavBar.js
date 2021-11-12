@@ -1,61 +1,87 @@
-import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import {
+  CCollapse,
+  CContainer,
+  CNavbar,
+  CNavbarBrand,
+  CNavbarNav,
+  CNavbarToggler,
+  CNavItem,
+  CNavLink,
+} from "@coreui/react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import CartWidget from "../cart-widget/CartWidget";
+import "./NavBar.css";
 
 const NavBar = () => {
   const history = useHistory();
+  const [visible, setVisible] = useState(false);
 
   return (
-    <Navbar bg="dark" expand="lg" variant="dark" fixed="top">
-      <Container>
-        <Navbar.Brand onClick={() => history.push("/")}>
+    <CNavbar expand="lg" colorScheme="dark" className="bg-dark" fixed="top">
+      <CContainer>
+        <CNavbarBrand onClick={() => history.push("/")}>
           <img
-            src="/img/logo.jpg"
+            src="/img/android-chrome-192x192.png"
             alt="krishna Hookah"
-            width="100"
-            height="100"
+            width="75"
+            height="75"
             className="d-inline-block align-top"
           />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link
-              to="/category/Hookah"
-              onClick={() => history.push("/category/Hookah")}
-            >
-              Hookah
-            </Nav.Link>
-            <Nav.Link
-              to="/category/Tabacos"
-              onClick={() => history.push("/category/Tabacos")}
-            >
-              Tabacos
-            </Nav.Link>
-            <Nav.Link
-              to="/category/Carbones"
-              onClick={() => history.push("/category/Carbones")}
-            >
-              Carbones
-            </Nav.Link>
-            <Nav.Link
-              to="/category/Accesorios"
-              onClick={() => history.push("/category/Accesorios")}
-            >
-              Accesorios
-            </Nav.Link>
-            <Nav.Link
-              to="/category/Contacto"
-              onClick={() => history.push("/category/Contacto")}
-            >
-              Contacto
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+        </CNavbarBrand>
+        <CNavbarToggler onClick={() => setVisible(!visible)} />
+        <CCollapse className="navbar-collapse" visible={visible}>
+          <CNavbarNav>
+            <CNavItem>
+              <CNavLink
+                to="/category/Hookah"
+                onClick={() => history.push("/category/Hookah")}
+                className="cNavLink"
+              >
+                Hookah
+              </CNavLink>
+            </CNavItem>
+            <CNavItem>
+              <CNavLink
+                to="/category/Tabacos"
+                onClick={() => history.push("/category/Tabacos")}
+                className="cNavLink"
+              >
+                Tabacos
+              </CNavLink>
+            </CNavItem>
+            <CNavItem>
+              <CNavLink
+                to="/category/Carbones"
+                onClick={() => history.push("/category/Carbones")}
+                className="cNavLink"
+              >
+                Carbones
+              </CNavLink>
+            </CNavItem>
+            <CNavItem>
+              <CNavLink
+                to="/category/Accesorios"
+                onClick={() => history.push("/category/Accesorios")}
+                className="cNavLink"
+              >
+                Accesorios
+              </CNavLink>
+            </CNavItem>
+            <CNavItem>
+              <CNavLink
+                to="/category/Contacto"
+                onClick={() => history.push("/category/Contacto")}
+                className="cNavLink"
+              >
+                Contacto
+              </CNavLink>
+            </CNavItem>
+          </CNavbarNav>
+        </CCollapse>
         <CartWidget />
-      </Container>
-    </Navbar>
+      </CContainer>
+    </CNavbar>
   );
 };
 
