@@ -11,7 +11,7 @@ const CartWidget = () => {
   return (
     <Link to="/cart">
       <CAvatar>
-        <CIcon icon={cilBasket} size="lg" />
+        <CIcon icon={cilBasket} size="xl" />
         {totalCount() === 0 ? null : (
           <CBadge color="success" position="top-end" shape="rounded-circle">
             {totalCount()}

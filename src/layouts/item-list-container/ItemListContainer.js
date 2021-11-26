@@ -60,7 +60,7 @@ function ItemListContainer() {
   return (
     <CContainer fluid className="itemListContainer">
       <h1>Bienvenidos a Krishna's Hookah</h1>
-      <CContainer fluid>
+      <CContainer fluid className="itemListContainer__content">
         {isLoading ? (
           <CSpinner role="status" color="success">
             <span className="visually-hidden">Loading...</span>

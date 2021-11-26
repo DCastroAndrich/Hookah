@@ -1,0 +1,9 @@
+.footer {
+    background: var(--cui-dark,#4f5d73);
+    color: whitesmoke;
+    border: none;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+
+}

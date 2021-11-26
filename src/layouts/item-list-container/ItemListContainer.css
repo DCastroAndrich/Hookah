@@ -2,3 +2,7 @@
   color: #10ebba;
   text-align: center !important;
 }
+
+.itemListContainer__content {
+  padding-bottom: 70px;
+}

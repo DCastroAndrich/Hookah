@@ -19,7 +19,7 @@ const NavBar = () => {
 
   return (
     <CNavbar expand="lg" colorScheme="dark" className="bg-dark" fixed="top">
-      <CContainer>
+      <CContainer fluid>
         <CNavbarBrand onClick={() => history.push("/")}>
           <img
             src="/img/android-chrome-192x192.png"

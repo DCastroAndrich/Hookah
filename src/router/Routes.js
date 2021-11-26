@@ -4,6 +4,7 @@ import ItemListContainer from "../layouts/item-list-container/ItemListContainer"
 import NavBar from "../components/nav-bar/NavBar";
 import ItemDetailContainer from "../layouts/item-detail-container/ItemDetailContainer";
 import CartContainer from "../layouts/cart-container/CartContainer"
+import Footer from "../components/footer/Footer";
 
 const Routes = () => {
   return (
@@ -15,6 +16,7 @@ const Routes = () => {
         <Route path="/item/:itemId" component={ItemDetailContainer} />
         <Route path="/cart" component={ CartContainer } />
       </Switch>
+      <Footer/>
     </BrowserRouter>
   );
 };
