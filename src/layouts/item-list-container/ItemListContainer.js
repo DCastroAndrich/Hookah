@@ -3,6 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ItemList from "../../components/item-list/ItemList";
 import { getFirestore } from "../../firebase/index";
+import Hookah from "../../components/category-description/Hookah";
+import Carbones from "../../components/category-description/Carbones";
+import Tabacos from "../../components/category-description/Tabacos";
+import Accesorios from "../../components/category-description/Accesorios";
 
 import "./ItemListContainer.css";
 
@@ -68,7 +72,29 @@ function ItemListContainer() {
         ) : (
           <>
             {categoryId ? (
-              <h2>{categoryId}</h2>
+              <>
+                <h2>{categoryId}</h2>
+                <div>
+                  {(() => {
+                    switch ({ categoryId }) {
+                      case "Hookah":
+                        return <Hookah />;
+
+                      case "Carbones":
+                        return <Carbones />;
+
+                      case "Tabacos":
+                        return <Tabacos />;
+
+                      case "Accesorios":
+                        return <Accesorios />;
+
+                      default:
+                        break;
+                    }
+                  })}
+                </div>
+              </>
             ) : (
               <h2>Catalogo de productos</h2>
             )}

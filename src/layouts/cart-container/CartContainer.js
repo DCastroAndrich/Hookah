@@ -61,12 +61,12 @@ const CartContainer = () => {
             </CContainer>
           </>
         ) : (
-          <>
+          <CContainer fluid style={{textAlign: "center", color: "aqua"}} >
             <h2>No hay items agregados al Cart</h2>
             <Link to="/">
               <CButton color="info">Ir al Catálogo de Productos</CButton>
             </Link>
-          </>
+          </CContainer>
         )}
       </div>
     </CContainer>
