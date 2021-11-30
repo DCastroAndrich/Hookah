@@ -1,0 +1,17 @@
+.formContainer {
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 50%);
+    border-radius: 8px;
+    text-align: center;
+    width: 40%;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 70px;
+    font-weight: 600;
+}
+
+.confirmed {
+    background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+}

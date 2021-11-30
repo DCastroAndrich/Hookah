@@ -86,8 +86,7 @@ const ItemDetail = ({
                 <CCardFooter>
                   <CRow>
                     <CCardSubtitle>
-                      Se añadieron {count} unidad/es, por un precio total de ${" "}
-                      {total.toFixed(2)}
+                      Se añadieron {count} unidad/es, por un precio total de $ {total.toFixed(2)}
                     </CCardSubtitle>
                   </CRow>
                   <Link to="/cart">

@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { cilCheckCircle } from "@coreui/icons";
-import CIcon from "@coreui/icons-react";
 import {
-  CAlert,
   CButton,
   CContainer,
   CForm,
@@ -14,8 +11,13 @@ import {
 import { getFirestore } from "../../firebase";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
+import { CartContext } from "../../context/CartContext";
+import "./PurchaseForm.css";
 
-const UserForm = ({ items, total, clear }) => {
+const UserForm = () => {
+  const { items, clear, totalPrice } = useContext(CartContext);
+  const [validated, setValidated] = useState(false);
+
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -39,12 +41,18 @@ const UserForm = ({ items, total, clear }) => {
   const newOrder = {
     buyer: data,
     items: newItems,
-    total,
+    total: totalPrice().toFixed(2),
     date: firebase.firestore.Timestamp.fromDate(new Date()),
   };
 
   const sendOrder = (e) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+    }
+    setValidated(true);
 
     const db = getFirestore();
     const orders = db.collection("orders");
@@ -66,8 +74,12 @@ const UserForm = ({ items, total, clear }) => {
   };
 
   return (
-    <CContainer>
-      <CForm onSubmit={sendOrder}>
+    <CContainer className="formContainer">
+      <CForm
+        className="needs-validation"
+        validated={validated}
+        onSubmit={sendOrder}
+      >
         <div className="mb-3">
           <CFormLabel htmlFor="name">Nombre y Apellido</CFormLabel>
           <CFormInput
@@ -76,6 +88,7 @@ const UserForm = ({ items, total, clear }) => {
             aria-describedby="nameHelp"
             placeholder="Juan Perez"
             onChange={handleOnChange}
+            required
           />
           <CFormText id="nameHelp">
             Ingrese su nombre y apellido completos.
@@ -89,6 +102,7 @@ const UserForm = ({ items, total, clear }) => {
             aria-describedby="emailHelp"
             placeholder="juanperez@correo.com"
             onChange={handleOnChange}
+            required
           />
           <CFormText id="nameHelp">Ingrese email válido.</CFormText>
         </div>
@@ -99,6 +113,7 @@ const UserForm = ({ items, total, clear }) => {
             id="phone"
             aria-describedby="phoneHelp"
             onChange={handleOnChange}
+            required
           />
           <CFormText id="nameHelp">
             Ingrese un número telefónico de contacto.
@@ -108,26 +123,19 @@ const UserForm = ({ items, total, clear }) => {
           <CButton type="submit">Confirmar pedido</CButton>
         </div>
         {orderCreatedId && (
-          <CAlert color="success" className="d-flex align-items-center">
-            <CIcon
-              icon={cilCheckCircle}
-              className="flex-shrink-0 me-2"
-              width={24}
-              height={24}
-            />
-            <div>
-              <h3>Pedido Confirmado</h3>
-              <p>
-                Su pedido por un total de $ {total}, ha sido registrado bajo el
-                ID: {orderCreatedId}
-              </p>
-              <Link to="/">
-                <CButton color="info" onClick={clear}>
-                  Volver
-                </CButton>
-              </Link>
-            </div>
-          </CAlert>
+          <CContainer className="confirmed">
+            <h2>Pedido Confirmado</h2>
+            <p>
+              Su pedido por un total de $ {totalPrice().toFixed(2)}, ha sido
+              registrado bajo el ID:
+            </p>
+            <h4> {orderCreatedId}</h4>
+            <Link to="/">
+              <CButton color="info" onClick={clear}>
+                Volver
+              </CButton>
+            </Link>
+          </CContainer>
         )}
       </CForm>
     </CContainer>

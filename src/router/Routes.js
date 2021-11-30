@@ -5,6 +5,7 @@ import NavBar from "../components/nav-bar/NavBar";
 import ItemDetailContainer from "../layouts/item-detail-container/ItemDetailContainer";
 import CartContainer from "../layouts/cart-container/CartContainer"
 import Footer from "../components/footer/Footer";
+import PurchaseForm from "../components/purchase-form/PurchaseForm"
 
 const Routes = () => {
   return (
@@ -15,6 +16,7 @@ const Routes = () => {
         <Route path="/category/:categoryId" component={ItemListContainer} />
         <Route path="/item/:itemId" component={ItemDetailContainer} />
         <Route path="/cart" component={ CartContainer } />
+        <Route path="/checkout" component={ PurchaseForm } />
       </Switch>
       <Footer/>
     </BrowserRouter>

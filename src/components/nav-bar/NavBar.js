@@ -68,15 +68,6 @@ const NavBar = () => {
                 Accesorios
               </CNavLink>
             </CNavItem>
-            <CNavItem>
-              <CNavLink
-                to="/category/Contacto"
-                onClick={() => history.push("/category/Contacto")}
-                className="cNavLink"
-              >
-                Contacto
-              </CNavLink>
-            </CNavItem>
           </CNavbarNav>
         </CCollapse>
         <CartWidget />
