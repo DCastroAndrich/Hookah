@@ -31,6 +31,10 @@ El sitio se dividió en las siguientes urls:
 
 -  **/checkout/**: ruta al formulario del comprador, donde ingresando los datos solicitados, se dará por finalizada la operación dándole al comprador un ID para el seguimiento del pedido. A su vez, se modifican en la base de datos el stock de los productos seleccionados y se genera una orden de compra con los datos que el cliente ingesó en el formulario.
 
+
+  ## Demo
+  [Krishna's Hookah Store](https://nifty-mahavira-4a6882.netlify.app/)
+  
   
   
   
